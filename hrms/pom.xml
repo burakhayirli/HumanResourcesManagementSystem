@@ -13,7 +13,7 @@
 	<artifactId>hrms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hrms</name>
-	<description>Human Resources Management System wtih Java Spring Boot</description>
+	<description>Human Resources Management System with Java Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
