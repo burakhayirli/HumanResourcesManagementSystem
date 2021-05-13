@@ -18,7 +18,6 @@ import com.burakhayirli.hrms.entities.concretes.JobPosition;
 
 
 @RestController
-//@RequestMapping(name="api/jobpositions/")
 @RequestMapping("/api/jobpositions")
 public class JobPositionsController {	
 
