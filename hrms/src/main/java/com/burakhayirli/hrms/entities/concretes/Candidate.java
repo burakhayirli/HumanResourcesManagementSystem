@@ -6,6 +6,8 @@
  */
 package com.burakhayirli.hrms.entities.concretes;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,9 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,18 +26,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 //@PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private int id;
-
-	@ManyToOne(optional = false,fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private User user;
-
-	//@Column(name = "user_id", insertable = false,	 updatable = false)
-	//private int userId;
+//
+//	@ManyToOne(optional = false,fetch = FetchType.EAGER,targetEntity = User.class)
+//	@JoinColumn(name = "user_id", referencedColumnName = "id")
+//	private User user;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -50,5 +42,18 @@ public class Candidate extends User {
 
 	@Column(name = "year_of_birth")
 	private int yearOfBirth;
+	
+	public Candidate() {}
+
+	public Candidate(Long id, String firstName, String lastName, String identityNumber, int yearOfBirth,String email, String password, Date createdAt, Integer createdBy, Date updatedAt,
+			Integer updatedBy, Boolean status) {
+		super(id, email, password, createdAt, createdBy, updatedAt, updatedBy, status);
+		this.firstName = firstName;
+		this.LastName = lastName;
+		this.identityNumber = identityNumber;
+		this.yearOfBirth = yearOfBirth;
+	}
+
+	
 
 }

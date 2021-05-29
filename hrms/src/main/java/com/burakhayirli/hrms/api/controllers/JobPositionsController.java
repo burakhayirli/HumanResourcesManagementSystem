@@ -30,8 +30,7 @@ public class JobPositionsController {
 	}
 	
 	@GetMapping("/getall")
-	public List<JobPosition> getAll() {
-		
+	public List<JobPosition> getAll() {		
 		return this.jobPositionService.getAll();
 	}
 

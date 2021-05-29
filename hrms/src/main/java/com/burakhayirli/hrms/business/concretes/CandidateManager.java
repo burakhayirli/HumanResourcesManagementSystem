@@ -33,7 +33,8 @@ public class CandidateManager implements CandidateService {
 
 	@Override
 	public List<CandidateDto> getall() {
-		CandidateDto[] candidatesDto = modelMapper.map(this.candidateDao.findAll(), CandidateDto[].class);
+		CandidateDto[] candidatesDto = 
+				modelMapper.map(this.candidateDao.findAll(), CandidateDto[].class);
 		return Arrays.asList(candidatesDto);
 	}
 

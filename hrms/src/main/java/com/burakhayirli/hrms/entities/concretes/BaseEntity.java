@@ -10,20 +10,23 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity  {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+	
 	@Column(name = "created_at")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
@@ -40,5 +43,19 @@ public abstract class BaseEntity  {
 
 	@Column(name = "status")
 	private Boolean status;
+	
+	public BaseEntity() {}
+
+	public BaseEntity(Long id, Date createdAt, Integer createdBy, Date updatedAt, Integer updatedBy, Boolean status) {
+		super();
+		this.id = id;
+		this.createdAt = createdAt;
+		this.createdBy = createdBy;
+		this.updatedAt = updatedAt;
+		this.updatedBy = updatedBy;
+		this.status = status;
+	}
+	
+	
 
 }
