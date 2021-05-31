@@ -2,15 +2,14 @@
  * Copyright (C) 2021 <https://github.com/burakhayirli>
  * @author BURAKHAYIRLI
  * Yazılım Geliştirici Yetiştirme Kampı (JAVA + REACT)
- * 11 May 2021
+ * 13 May 2021
  */
 package com.burakhayirli.hrms.business.abstracts;
 
 import java.util.List;
 
-import com.burakhayirli.hrms.core.utilities.results.DataResult;
-import com.burakhayirli.hrms.entities.concretes.JobPosition;
+import com.burakhayirli.hrms.entities.concretes.Employer;
 
-public interface JobPositionService {
-	DataResult<List<JobPosition>> getAll();
+public interface EmployerService {
+	List<Employer> getall();
 }

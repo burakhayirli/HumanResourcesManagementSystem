@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.burakhayirli.hrms.business.abstracts.JobPositionService;
+import com.burakhayirli.hrms.core.utilities.results.DataResult;
+import com.burakhayirli.hrms.core.utilities.results.SuccessDataResult;
 import com.burakhayirli.hrms.dataAccess.abstracts.JobPositionDao;
 import com.burakhayirli.hrms.entities.concretes.JobPosition;
 
@@ -27,8 +29,8 @@ public class JobPositionManager implements JobPositionService {
 	}
 
 	@Override
-	public List<JobPosition> getAll() {
-		return this.jobPositionDao.findAll();
+	public DataResult<List<JobPosition>> getAll() {
+		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll(), "Meslek tanımları listelendi");
 	}
 
 }

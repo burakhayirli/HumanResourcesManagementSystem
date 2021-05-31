@@ -8,8 +8,12 @@ package com.burakhayirli.hrms.business.abstracts;
 
 import java.util.List;
 
+import com.burakhayirli.hrms.core.utilities.results.DataResult;
+import com.burakhayirli.hrms.core.utilities.results.Result;
+import com.burakhayirli.hrms.entities.concretes.Candidate;
 import com.burakhayirli.hrms.entities.dtos.CandidateDto;
 
 public interface CandidateService {
-	List<CandidateDto> getall();
+	DataResult<List<CandidateDto>> getall();
+	Result add(Candidate candidate); 
 }

@@ -10,5 +10,8 @@ import java.util.List;
 import com.burakhayirli.hrms.entities.concretes.User;
 
 public interface UserService {
+//	void add(User user);
+//	User getByEmail(String email);
+//	boolean verifyEmail(User user,String code);
 	List<User> getall();
 }

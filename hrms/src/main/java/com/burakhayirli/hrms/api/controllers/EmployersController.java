@@ -10,37 +10,32 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.burakhayirli.hrms.business.abstracts.CandidateService;
-import com.burakhayirli.hrms.core.utilities.results.DataResult;
-import com.burakhayirli.hrms.core.utilities.results.Result;
+import com.burakhayirli.hrms.business.abstracts.EmployerService;
 import com.burakhayirli.hrms.entities.concretes.Candidate;
+import com.burakhayirli.hrms.entities.concretes.Employer;
+import com.burakhayirli.hrms.entities.concretes.EmployersVerification;
 import com.burakhayirli.hrms.entities.dtos.CandidateDto;
 
 @RestController
-@RequestMapping("/api/candidates")
-public class CandidatesController {
+@RequestMapping("/api/employers")
+public class EmployersController {
 
-	private CandidateService candidateService;
+	private EmployerService employerService;
 
 	@Autowired
-	public CandidatesController(CandidateService candidateService) {
+	public EmployersController(EmployerService employerService) {
 		super();
-		this.candidateService = candidateService;
+		this.employerService = employerService;
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<CandidateDto>> getAll() {
-		return this.candidateService.getall();
+	public List<Employer> getAll() {
+		return this.employerService.getall();
+
 	}
 
-	@PostMapping("/add")
-	public Result add(@RequestBody Candidate candidate) {
-		return this.candidateService.add(candidate);
-		
-	}
 }

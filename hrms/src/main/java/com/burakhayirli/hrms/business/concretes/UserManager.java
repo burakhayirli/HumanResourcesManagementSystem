@@ -7,6 +7,8 @@
 package com.burakhayirli.hrms.business.concretes;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,7 @@ import com.burakhayirli.hrms.entities.concretes.User;
 
 @Service
 public class UserManager implements UserService {
-	
+
 	private final UserDao userDao;
 
 	@Autowired
@@ -30,5 +32,6 @@ public class UserManager implements UserService {
 	public List<User> getall() {
 		return this.userDao.findAll();
 	}
+
 
 }
