@@ -35,26 +35,8 @@ import lombok.NoArgsConstructor;
 //@PrimaryKeyJoinColumn(name="id")
 public class CandidatesVerification extends BaseEntity{
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "id")
-//	private int id;
-
-	//@ManyToOne(optional = false,fetch = FetchType.EAGER)
-	//@JoinColumn(name = "user_verification_id", referencedColumnName = "id")
-	//@OneToMany(targetEntity = UserVerification.class)
-
 	@ManyToOne(optional = false,fetch = FetchType.EAGER)
 	@JoinColumn(name="user_verification_id",referencedColumnName = "id")
 	private UserVerification userVerification;
-	
-	//@JoinColumn(name="user_verification_id",table = "user_verifications",referencedColumnName = "id")
-	//private int userVerificationId;
-	
-	//@OneToMany(fetch = FetchType.EAGER,mappedBy = "UserVerification")
-	//@JoinColumn(name = "user_verification_id", referencedColumnName = "id")
-	//private UserVerification userVerification;
-	
-	//@Column(name = "user_verification_id")
-	//private int userVerificationId;
+
 }

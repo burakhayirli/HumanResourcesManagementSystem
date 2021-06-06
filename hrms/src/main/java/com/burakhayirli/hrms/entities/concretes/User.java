@@ -30,15 +30,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "users")
 @Data
-
 @EqualsAndHashCode(callSuper=false)
-//@ToString
-//@EqualsAndHashCode
-//@MappedSuperclass // Diğer sınıflarda extend edilebilir hale getirdik.
-//@Getter @Setter
-//@PrimaryKeyJoinColumn(name = "id")
-//@SecondaryTables(value = { @SecondaryTable(name = "employees") })
-//@DiscriminatorValue("users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User extends BaseEntity {
 
@@ -47,6 +39,9 @@ public abstract class User extends BaseEntity {
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "restricted")
+	private boolean restricted;
 	
 	public User() {}
 

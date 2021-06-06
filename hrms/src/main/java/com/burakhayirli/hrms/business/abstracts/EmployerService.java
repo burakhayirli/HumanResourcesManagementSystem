@@ -10,6 +10,6 @@ import java.util.List;
 
 import com.burakhayirli.hrms.entities.concretes.Employer;
 
-public interface EmployerService {
-	List<Employer> getall();
+public interface EmployerService extends UserService<Employer> {
+
 }

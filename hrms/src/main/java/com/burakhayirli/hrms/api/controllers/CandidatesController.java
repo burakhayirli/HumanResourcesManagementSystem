@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.burakhayirli.hrms.business.abstracts.CandidateService;
+import com.burakhayirli.hrms.business.abstracts.UserService;
 import com.burakhayirli.hrms.core.utilities.results.DataResult;
 import com.burakhayirli.hrms.core.utilities.results.Result;
 import com.burakhayirli.hrms.entities.concretes.Candidate;
@@ -23,24 +24,38 @@ import com.burakhayirli.hrms.entities.dtos.CandidateDto;
 
 @RestController
 @RequestMapping("/api/candidates")
-public class CandidatesController {
+public class CandidatesController extends UsersController<Candidate>{
 
 	private CandidateService candidateService;
 
 	@Autowired
-	public CandidatesController(CandidateService candidateService) {
-		super();
-		this.candidateService = candidateService;
+	public CandidatesController(UserService<Candidate> userService) {
+		super(userService);
+		this.candidateService = (CandidateService)userService;
 	}
 
-	@GetMapping("/getall")
-	public DataResult<List<CandidateDto>> getAll() {
-		return this.candidateService.getall();
-	}
+//	@GetMapping("/getall")
+//	public DataResult<List<Candidate>> getAll() {
+//		return this.candidateService.getAll();
+//	}
 
 	@PostMapping("/add")
 	public Result add(@RequestBody Candidate candidate) {
 		return this.candidateService.add(candidate);
-		
+	}
+	
+//	@PostMapping("getByEmail")
+//	public DataResult<Candidate> getByEmail(@RequestBody String email) {
+//		return this.candidateService.getByEmail(email);
+//	}
+	
+	@PostMapping("/existsByEmail")
+	public Result existsByEmail(@RequestBody String email) {
+		return this.candidateService.existsByEmail(email);
+	}
+
+	@PostMapping("/existsByIdentityNumber")
+	public Result existsByIdentityNumber(@RequestBody String identityNumber) {
+		return this.candidateService.existsByIdentityNumber(identityNumber);
 	}
 }

@@ -6,10 +6,9 @@
  */
 package com.burakhayirli.hrms.dataAccess.abstracts;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.burakhayirli.hrms.entities.concretes.Candidate;
 
-public interface CandidateDao extends JpaRepository<Candidate, Integer>{
+public interface CandidateDao extends UserDao<Candidate>{
 
+	boolean existsByIdentityNumber(String identityNumber);
 }

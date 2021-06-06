@@ -13,7 +13,6 @@ import com.burakhayirli.hrms.core.utilities.results.Result;
 import com.burakhayirli.hrms.entities.concretes.Candidate;
 import com.burakhayirli.hrms.entities.dtos.CandidateDto;
 
-public interface CandidateService {
-	DataResult<List<CandidateDto>> getall();
-	Result add(Candidate candidate); 
+public interface CandidateService extends UserService<Candidate> {	
+	Result existsByIdentityNumber(String identityNumber);
 }

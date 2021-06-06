@@ -36,29 +36,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-//@Inheritance(strategy = InheritanceType.JOINED)
-public class UserVerification extends BaseEntity{
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id")
-	//private int id;
+public class UserVerification extends BaseEntity {
 
-	//@ManyToOne(optional = false,fetch = FetchType.EAGER)
-	//@JoinColumn(name = "user_id", referencedColumnName = "id")
-	//@ManyToOne(optional = false,fetch = FetchType.EAGER)
-	
-	
-	@ManyToOne(optional = true,fetch = FetchType.EAGER)
-	@JoinColumn(name="user_id",referencedColumnName = "id")
+	@ManyToOne(optional = true, fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	
 	@Column(name = "verification_code")
 	private String verificationCode;
-	
+
 	@Column(name = "is_verified_email")
 	private boolean isVerifiedEmail;
-	
+
 	@Column(name = "email_verified_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date emailVerifiedDate;

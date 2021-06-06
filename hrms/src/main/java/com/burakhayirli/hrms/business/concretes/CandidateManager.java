@@ -22,35 +22,37 @@ import com.burakhayirli.hrms.core.utilities.results.Result;
 import com.burakhayirli.hrms.core.utilities.results.SuccessDataResult;
 import com.burakhayirli.hrms.core.utilities.results.SuccessResult;
 import com.burakhayirli.hrms.dataAccess.abstracts.CandidateDao;
+import com.burakhayirli.hrms.dataAccess.abstracts.UserDao;
 import com.burakhayirli.hrms.entities.concretes.Candidate;
 import com.burakhayirli.hrms.entities.dtos.CandidateDto;
 
 @Service
-public class CandidateManager implements CandidateService {
+public class CandidateManager extends UserManager<Candidate> implements CandidateService {
 
 	private final CandidateDao candidateDao;
 	private final ModelMapper modelMapper;
 	private final CandidateCheckService candidateCheckService;
 
 	@Autowired
-	public CandidateManager(CandidateDao candidateDao, ModelMapper modelMapper,
+	public CandidateManager(UserDao<Candidate> userDao, ModelMapper modelMapper,
 			CandidateCheckService candidateCheckService) {
-		super();
-		this.candidateDao = candidateDao;
+		super(userDao);
+		this.candidateDao =(CandidateDao) userDao;
 		this.modelMapper = modelMapper;
 		this.candidateCheckService = candidateCheckService;
 	}
 
-	@Override
-	public DataResult<List<CandidateDto>> getall() {
-		CandidateDto[] candidatesDto = modelMapper.map(this.candidateDao.findAll(), CandidateDto[].class);
+//	@Override
+//	public DataResult<List<Candidate>> getAll() {
+//		CandidateDto[] candidatesDto = modelMapper.map(this.candidateDao.findAll(), CandidateDto[].class);
+//
+//		if (candidatesDto.length > 0) {
+//			return new SuccessDataResult<List<CandidateDto>>(Arrays.asList(candidatesDto), "İş Arayanlar Listelendi.");
+//		} else
+//			return new ErrorDataResult<List<CandidateDto>>(null, "Kayıtlı İş Arayan Bulunamadı");
+//	}
 
-		if (candidatesDto.length > 0) {
-			return new SuccessDataResult<List<CandidateDto>>(Arrays.asList(candidatesDto), "İş Arayanlar Listelendi.");
-		} else
-			return new ErrorDataResult<List<CandidateDto>>(null, "Kayıtlı İş Arayan Bulunamadı");
-	}
-
+	
 	@Override
 	public Result add(Candidate candidate) {
 		if (candidateCheckService.CheckIfRealPerson(candidate)) {
@@ -59,7 +61,14 @@ public class CandidateManager implements CandidateService {
 		} else {
 			return new ErrorResult("Kişi doğrulaması başarısız. Verdiğiniz bilgilere ait bir kişi bulunamadı.");
 		}
-
 	}
 
+	@Override
+	public Result existsByIdentityNumber(String identityNumber) {
+		if(candidateDao.existsByIdentityNumber(identityNumber))
+			return new SuccessResult("Bu T.C. kimlik numarasına ait kullanıcı mevcut.");
+		else
+			return new ErrorResult("Bu T.C. kimlik numarasına ait kullanıcı mevcut değil");
+					
+	}
 }

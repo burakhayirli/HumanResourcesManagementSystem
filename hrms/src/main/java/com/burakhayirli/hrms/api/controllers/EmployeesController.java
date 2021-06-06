@@ -10,10 +10,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.burakhayirli.hrms.business.abstracts.EmployeeService;
+import com.burakhayirli.hrms.business.abstracts.UserService;
+import com.burakhayirli.hrms.core.utilities.results.DataResult;
+import com.burakhayirli.hrms.core.utilities.results.Result;
+import com.burakhayirli.hrms.entities.concretes.Candidate;
 import com.burakhayirli.hrms.entities.concretes.Employee;
 
 @RestController
@@ -22,13 +28,28 @@ public class EmployeesController {
 	private EmployeeService employeeService;
 
 	@Autowired
-	public EmployeesController(EmployeeService employeeService) {
+	public EmployeesController(UserService<Employee> userService) {
 		super();
-		this.employeeService = employeeService;
+		this.employeeService =(EmployeeService)userService;
 	}
 	
 	@GetMapping("/getall")
-	public List<Employee> getall(){
-		return this.employeeService.getall();
+	public DataResult<List<Employee>> getall(){
+		return this.employeeService.getAll();
+	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody Employee employee) {
+		return this.employeeService.add(employee);
+	}
+	
+	@PostMapping("getByEmail")
+	public DataResult<Employee> getByEmail(@RequestBody String email) {
+		return this.employeeService.getByEmail(email);
+	}
+	
+	@PostMapping("/existsByEmail")
+	public Result existsByEmail(@RequestBody String email) {
+		return this.employeeService.existsByEmail(email);
 	}
 }

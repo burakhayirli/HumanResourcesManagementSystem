@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.burakhayirli.hrms.entities.concretes.User;
 
-public interface UserDao extends JpaRepository<User, Integer> {
-
+public interface UserDao<T extends User> extends JpaRepository<T, Integer> {
+	boolean existsByEmail(String email);
+	T getByEmail(String email);
 }

@@ -30,14 +30,6 @@ import lombok.NoArgsConstructor;
 //@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Employer extends User {
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "id")
-//	private int id;
-
-//	@ManyToOne(optional = false,fetch = FetchType.EAGER)
-//	@JoinColumn(name = "user_id", referencedColumnName = "id")
-//	private User user;
 
 	@Column(name = "company_name")
 	private String companyName;

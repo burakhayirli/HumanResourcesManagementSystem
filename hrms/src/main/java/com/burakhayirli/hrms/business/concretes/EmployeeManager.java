@@ -14,29 +14,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.burakhayirli.hrms.business.abstracts.EmployeeService;
 import com.burakhayirli.hrms.dataAccess.abstracts.EmployeeDao;
+import com.burakhayirli.hrms.dataAccess.abstracts.UserDao;
 import com.burakhayirli.hrms.entities.concretes.Employee;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
-public class EmployeeManager implements EmployeeService {
+//@RequiredArgsConstructor
+public class EmployeeManager extends UserManager<Employee> implements EmployeeService {
 
 	private final EmployeeDao employeeDao;
 	private final ModelMapper modelMapper;
-/*
+
 	@Autowired
-	public EmployeeManager(EmployeeDao employeeDao, ModelMapper modelMapper) {
-		super();
-		this.employeeDao = employeeDao;
+	public EmployeeManager(UserDao<Employee> userDao, ModelMapper modelMapper) {
+		super(userDao);
+		this.employeeDao = (EmployeeDao)userDao;
 		this.modelMapper = modelMapper;
 	}
-	*/
+	
 
-	@Override
-	public List<Employee> getall() {
-		Employee[] employees = modelMapper.map(this.employeeDao.findAll(), Employee[].class);
-		return Arrays.asList(employees);
-	}
+//	@Override
+//	public List<Employee> getall() {
+//		Employee[] employees = modelMapper.map(this.employeeDao.findAll(), Employee[].class);
+//		return Arrays.asList(employees);
+//	}
 
 }

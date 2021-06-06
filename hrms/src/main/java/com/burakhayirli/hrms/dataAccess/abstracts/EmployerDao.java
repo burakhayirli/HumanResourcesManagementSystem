@@ -6,10 +6,8 @@
  */
 package com.burakhayirli.hrms.dataAccess.abstracts;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.burakhayirli.hrms.entities.concretes.Employer;
 
-public interface EmployerDao extends JpaRepository<Employer, Integer>{
+public interface EmployerDao extends UserDao<Employer>{
 
 }

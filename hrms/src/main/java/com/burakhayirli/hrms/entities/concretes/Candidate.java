@@ -24,12 +24,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "candidates")
 @Data
 @EqualsAndHashCode(callSuper = false)
-//@PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
-//
-//	@ManyToOne(optional = false,fetch = FetchType.EAGER,targetEntity = User.class)
-//	@JoinColumn(name = "user_id", referencedColumnName = "id")
-//	private User user;
 
 	@Column(name = "first_name")
 	private String firstName;

@@ -16,7 +16,7 @@ public class MernisServiceAdapter implements CandidateCheckService {
 
 	@Override
 	public boolean CheckIfRealPerson(Candidate candidate) {
-		return false;
+		return true;
 	}
 
 }
