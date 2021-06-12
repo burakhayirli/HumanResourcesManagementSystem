@@ -27,6 +27,7 @@ import com.burakhayirli.hrms.entities.dtos.CandidateDto;
 public class CandidatesController extends UsersController<Candidate>{
 
 	private CandidateService candidateService;
+	
 
 	@Autowired
 	public CandidatesController(UserService<Candidate> userService) {
@@ -34,28 +35,13 @@ public class CandidatesController extends UsersController<Candidate>{
 		this.candidateService = (CandidateService)userService;
 	}
 
-//	@GetMapping("/getall")
-//	public DataResult<List<Candidate>> getAll() {
-//		return this.candidateService.getAll();
-//	}
-
-	@PostMapping("/add")
-	public Result add(@RequestBody Candidate candidate) {
-		return this.candidateService.add(candidate);
-	}
-	
-//	@PostMapping("getByEmail")
-//	public DataResult<Candidate> getByEmail(@RequestBody String email) {
-//		return this.candidateService.getByEmail(email);
-//	}
-	
 	@PostMapping("/existsByEmail")
-	public Result existsByEmail(@RequestBody String email) {
+	public Result existsByEmail(String email) {
 		return this.candidateService.existsByEmail(email);
 	}
 
 	@PostMapping("/existsByIdentityNumber")
-	public Result existsByIdentityNumber(@RequestBody String identityNumber) {
+	public Result existsByIdentityNumber( String identityNumber) {
 		return this.candidateService.existsByIdentityNumber(identityNumber);
 	}
 }

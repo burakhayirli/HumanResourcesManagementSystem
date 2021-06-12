@@ -6,14 +6,14 @@
  */
 package com.burakhayirli.hrms.api.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.burakhayirli.hrms.business.abstracts.CandidatesVerificationService;
+import com.burakhayirli.hrms.business.abstracts.UserVerificationService;
+import com.burakhayirli.hrms.core.utilities.results.Result;
 import com.burakhayirli.hrms.entities.concretes.CandidatesVerification;
 
 @RestController
@@ -23,14 +23,15 @@ public class CandidatesVerificationsController {
 	private CandidatesVerificationService candidatesVerificationService;
 
 	@Autowired
-	public CandidatesVerificationsController(CandidatesVerificationService candidatesVerificationService) {
+	public CandidatesVerificationsController(UserVerificationService<CandidatesVerification> userVerificationService) {
 		super();
-		this.candidatesVerificationService = candidatesVerificationService;
+		this.candidatesVerificationService = (CandidatesVerificationService)userVerificationService;
 	}
 
-	@GetMapping("/getall")
-	public List<CandidatesVerification> getAll() {
-
-		return candidatesVerificationService.getAll();
+	@PostMapping("/verify")
+	public Result verify(Long candidateId,Long employeeId) {
+		CandidatesVerification candidatesVerification= candidatesVerificationService.getByUserId(candidateId).getData();
+		
+		return candidatesVerificationService.update(candidatesVerification);
 	}
 }

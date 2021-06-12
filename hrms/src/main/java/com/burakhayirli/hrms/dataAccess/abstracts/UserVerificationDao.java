@@ -2,15 +2,17 @@
  * Copyright (C) 2021 <https://github.com/burakhayirli>
  * @author BURAKHAYIRLI
  * Yazılım Geliştirici Yetiştirme Kampı (JAVA + REACT)
- * 12 May 2021
+ * 7 Haz 2021
  */
 package com.burakhayirli.hrms.dataAccess.abstracts;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.burakhayirli.hrms.core.entities.User;
+import com.burakhayirli.hrms.entities.concretes.UserVerification;
 
-public interface UserDao<T extends User> extends JpaRepository<T, Integer> {
-	boolean existsByEmail(String email);
-	T getByEmail(String email);
+public interface UserVerificationDao<T extends UserVerification> extends JpaRepository<T, Long>  {
+	
+	T findByUserId(Long userId);
 }

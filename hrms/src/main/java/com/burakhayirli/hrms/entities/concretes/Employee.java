@@ -22,6 +22,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.burakhayirli.hrms.core.entities.User;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,12 +35,15 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Employee extends User {
 
+	@NotNull
 	@Column(name = "first_name")
 	private String firstName;
 
+	@NotNull
 	@Column(name = "last_name")
 	private String lastName;
 
+	@NotNull
 	@Column(name = "year_of_birth")
 	private int yearOfBirth;
 

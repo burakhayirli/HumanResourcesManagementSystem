@@ -54,12 +54,12 @@ public class CandidateManager extends UserManager<Candidate> implements Candidat
 
 	
 	@Override
-	public Result add(Candidate candidate) {
+	public DataResult<Candidate> add(Candidate candidate) {
 		if (candidateCheckService.CheckIfRealPerson(candidate)) {
-			candidateDao.save(candidate);
-			return new SuccessResult("Kişi doğrulaması başarılı. Kişi kaydedildi.");
+			;
+			return new SuccessDataResult<Candidate>(candidateDao.save(candidate),"Kişi doğrulaması başarılı. Kişi kaydedildi.");
 		} else {
-			return new ErrorResult("Kişi doğrulaması başarısız. Verdiğiniz bilgilere ait bir kişi bulunamadı.");
+			return new ErrorDataResult<Candidate>("Kişi doğrulaması başarısız. Verdiğiniz bilgilere ait bir kişi bulunamadı.");
 		}
 	}
 

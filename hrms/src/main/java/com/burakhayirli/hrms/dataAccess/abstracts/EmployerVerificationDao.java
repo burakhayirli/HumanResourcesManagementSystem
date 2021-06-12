@@ -2,12 +2,12 @@
  * Copyright (C) 2021 <https://github.com/burakhayirli>
  * @author BURAKHAYIRLI
  * Yazılım Geliştirici Yetiştirme Kampı (JAVA + REACT)
- * 16 May 2021
+ * 7 Haz 2021
  */
 package com.burakhayirli.hrms.dataAccess.abstracts;
 
-import com.burakhayirli.hrms.entities.concretes.CandidatesVerification;
+import com.burakhayirli.hrms.entities.concretes.EmployersVerification;
 
-public interface CandidateVerificationDao extends UserVerificationDao<CandidatesVerification> {
+public interface EmployerVerificationDao extends UserVerificationDao<EmployersVerification>{
 
 }

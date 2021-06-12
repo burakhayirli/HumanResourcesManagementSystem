@@ -32,12 +32,5 @@ public class EmployeeManager extends UserManager<Employee> implements EmployeeSe
 		this.employeeDao = (EmployeeDao)userDao;
 		this.modelMapper = modelMapper;
 	}
-	
-
-//	@Override
-//	public List<Employee> getall() {
-//		Employee[] employees = modelMapper.map(this.employeeDao.findAll(), Employee[].class);
-//		return Arrays.asList(employees);
-//	}
 
 }

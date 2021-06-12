@@ -30,13 +30,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "candidates_verifications")
 @Data
 @EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
-@NoArgsConstructor
-//@PrimaryKeyJoinColumn(name="id")
-public class CandidatesVerification extends BaseEntity{
 
-	@ManyToOne(optional = false,fetch = FetchType.EAGER)
-	@JoinColumn(name="user_verification_id",referencedColumnName = "id")
-	private UserVerification userVerification;
+public class CandidatesVerification extends UserVerification{
+
+	//@ManyToOne(optional = false,fetch = FetchType.EAGER)
+	//@JoinColumn(name="user_verification_id",referencedColumnName = "id")
+	//private int userVerificationId;
 
 }

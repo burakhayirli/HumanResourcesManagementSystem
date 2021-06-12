@@ -15,13 +15,13 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.burakhayirli.hrms.business.abstracts.UserService;
+import com.burakhayirli.hrms.core.entities.User;
 import com.burakhayirli.hrms.core.utilities.results.DataResult;
 import com.burakhayirli.hrms.core.utilities.results.ErrorResult;
 import com.burakhayirli.hrms.core.utilities.results.Result;
 import com.burakhayirli.hrms.core.utilities.results.SuccessDataResult;
 import com.burakhayirli.hrms.core.utilities.results.SuccessResult;
 import com.burakhayirli.hrms.dataAccess.abstracts.UserDao;
-import com.burakhayirli.hrms.entities.concretes.User;
 import com.google.common.collect.ImmutableList;
 
 @Primary
@@ -42,7 +42,7 @@ public class UserManager<T extends User> implements UserService<T> {
 	}
 
 	@Override
-	public Result add(T user) {
+	public DataResult<T> add(T user) {
 		return null;
 	}
 

@@ -8,6 +8,8 @@ package com.burakhayirli.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,17 +41,17 @@ public class EmployeesController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Employee employee) {
+	public Result add(@Valid @RequestBody Employee employee) {
 		return this.employeeService.add(employee);
 	}
 	
 	@PostMapping("getByEmail")
-	public DataResult<Employee> getByEmail(@RequestBody String email) {
+	public DataResult<Employee> getByEmail( String email) {
 		return this.employeeService.getByEmail(email);
 	}
 	
 	@PostMapping("/existsByEmail")
-	public Result existsByEmail(@RequestBody String email) {
+	public Result existsByEmail( String email) {
 		return this.employeeService.existsByEmail(email);
 	}
 }

@@ -34,7 +34,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployersVerification extends BaseEntity{
+public class EmployersVerification extends UserVerification{
 	
 	@Column(name = "is_verified_by_employee")
 	private boolean isVerifiedByEmployee;

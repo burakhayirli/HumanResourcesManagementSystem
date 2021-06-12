@@ -42,18 +42,18 @@ public class EmployersController {
 		return this.employerService.getAll();
 	}
 
-	@PostMapping("/add")
-	public Result add(@RequestBody Employer employer) {
-		return this.employerService.add(employer);
-	}
+//	@PostMapping("/add")
+//	public Result add(@RequestBody Employer employer) {
+//		return this.employerService.add(employer);
+//	}
 
 	@PostMapping("getByEmail")
-	public DataResult<Employer> getByEmail(@RequestBody String email) {
+	public DataResult<Employer> getByEmail(String email) {
 		return this.employerService.getByEmail(email);
 	}
 
 	@PostMapping("/existsByEmail")
-	public Result existsByEmail(@RequestBody String email) {
+	public Result existsByEmail(String email) {
 		return this.employerService.existsByEmail(email);
 	}
 

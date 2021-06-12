@@ -12,23 +12,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.burakhayirli.hrms.business.abstracts.CandidatesVerificationService;
+import com.burakhayirli.hrms.core.utilities.results.DataResult;
+import com.burakhayirli.hrms.core.utilities.results.Result;
+import com.burakhayirli.hrms.core.utilities.results.SuccessDataResult;
+import com.burakhayirli.hrms.core.utilities.results.SuccessResult;
 import com.burakhayirli.hrms.dataAccess.abstracts.CandidateVerificationDao;
+import com.burakhayirli.hrms.dataAccess.abstracts.UserVerificationDao;
+import com.burakhayirli.hrms.entities.concretes.Candidate;
 import com.burakhayirli.hrms.entities.concretes.CandidatesVerification;
+import com.burakhayirli.hrms.entities.concretes.UserVerification;
+import com.google.common.base.Optional;
 
 @Service
-public class CandidatesVerificationManager implements CandidatesVerificationService {
+public class CandidatesVerificationManager extends UserVerificationManager<CandidatesVerification> 
+											implements CandidatesVerificationService {
 
 	private CandidateVerificationDao candidatesVerificationDao;
-
+	//EmailVerificationService
 	@Autowired
-	public CandidatesVerificationManager(CandidateVerificationDao candidatesVerificationDao) {
-		super();
-		this.candidatesVerificationDao = candidatesVerificationDao;
+	public CandidatesVerificationManager(UserVerificationDao<CandidatesVerification> userVerificationDao) {
+		super(userVerificationDao);
+		this.candidatesVerificationDao = (CandidateVerificationDao)userVerificationDao;
 	}
-
-	@Override
-	public List<CandidatesVerification> getAll() {
-		return candidatesVerificationDao.findAll();
-	}
-
 }

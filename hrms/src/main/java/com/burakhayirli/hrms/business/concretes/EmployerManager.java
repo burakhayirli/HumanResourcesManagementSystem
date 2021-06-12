@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.burakhayirli.hrms.business.abstracts.CandidateService;
 import com.burakhayirli.hrms.business.abstracts.EmployerService;
+import com.burakhayirli.hrms.core.utilities.results.DataResult;
 import com.burakhayirli.hrms.core.utilities.results.Result;
 import com.burakhayirli.hrms.dataAccess.abstracts.CandidateDao;
 import com.burakhayirli.hrms.dataAccess.abstracts.EmployerDao;
@@ -37,7 +38,7 @@ public class EmployerManager extends UserManager<Employer> implements EmployerSe
 	}
 
 	@Override
-	public Result add(Employer user) {
+	public DataResult<Employer> add(Employer user) {
 		return super.add(user);
 	}
 //	@Override

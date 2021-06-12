@@ -6,9 +6,14 @@
  */
 package com.burakhayirli.hrms.business.abstracts;
 
-import com.burakhayirli.hrms.entities.concretes.User;
+import com.burakhayirli.hrms.core.utilities.results.Result;
+import com.burakhayirli.hrms.entities.concretes.Candidate;
+import com.burakhayirli.hrms.entities.concretes.Employer;
 
 public interface AuthService {
-	boolean login(String email, String password);
-	boolean register(User user);
+	
+	Result registerEmployer(Employer employer,String confirmPassword);
+	Result registerCandidate(Candidate candidate ,String confirmPassword);
+	//Result register(User user,String confirmPassword);
+	Result confirmPassword(String password,String confirmPassword);
 }

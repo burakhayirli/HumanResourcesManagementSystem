@@ -10,6 +10,9 @@ import java.util.List;
 
 import com.burakhayirli.hrms.entities.concretes.CandidatesVerification;
 
-public interface CandidatesVerificationService {
-	List<CandidatesVerification> getAll();
+public interface CandidatesVerificationService extends UserVerificationService<CandidatesVerification> {
+	
+
+	
+	
 }

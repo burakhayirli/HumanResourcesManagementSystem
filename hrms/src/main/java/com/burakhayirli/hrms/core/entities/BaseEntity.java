@@ -4,7 +4,7 @@
  * Yazılım Geliştirici Yetiştirme Kampı (JAVA + REACT)
  * 12 May 2021
  */
-package com.burakhayirli.hrms.entities.concretes;
+package com.burakhayirli.hrms.core.entities;
 
 import java.io.Serializable;
 import java.util.Date;

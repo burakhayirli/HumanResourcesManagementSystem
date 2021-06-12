@@ -17,6 +17,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.burakhayirli.hrms.core.entities.User;
+import com.burakhayirli.hrms.core.utilities.validations.UniqueIdentityNumber;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,15 +31,20 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Candidate extends User {
 
+	@NotNull
 	@Column(name = "first_name")
 	private String firstName;
 
+	@NotNull
 	@Column(name = "last_name")
 	private String LastName;
 
+	@NotNull
+	@UniqueIdentityNumber
 	@Column(name = "identity_number")
 	private String identityNumber;
 
+	@NotNull
 	@Column(name = "year_of_birth")
 	private int yearOfBirth;
 	

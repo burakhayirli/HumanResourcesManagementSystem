@@ -23,6 +23,9 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.burakhayirli.hrms.core.entities.BaseEntity;
+
 import javax.persistence.InheritanceType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,12 +38,12 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserVerification extends BaseEntity {
 
-	@ManyToOne(optional = true, fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private User user;
+	//@ManyToOne(optional = true, fetch = FetchType.EAGER)
+	@Column(name = "user_id")
+	private int userId;
 
 	@Column(name = "verification_code")
 	private String verificationCode;
@@ -51,5 +54,6 @@ public class UserVerification extends BaseEntity {
 	@Column(name = "email_verified_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date emailVerifiedDate;
+	
 
 }

@@ -17,6 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.burakhayirli.hrms.core.entities.User;
+import com.burakhayirli.hrms.core.utilities.validations.WebSite;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,12 +35,16 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Employer extends User {
 
+	@NotNull
 	@Column(name = "company_name")
 	private String companyName;
 
+	@NotNull
+	@WebSite
 	@Column(name = "website")
 	private String website;
 
+	@NotNull
 	@Column(name = "phone")
 	private String phone;
 
