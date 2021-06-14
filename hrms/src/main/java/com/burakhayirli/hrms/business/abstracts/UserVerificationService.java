@@ -19,4 +19,9 @@ public interface UserVerificationService<T extends UserVerification> {
 	DataResult<T> getByUserId(Long candidateId);
 	
 	Result sendVerificationCode(String emailAddress);
+	
+//	
+//	String createVerifyCode(User user);
+//	void sendMail(String mail);
+//	Result verifyUser(String code); 
 }
