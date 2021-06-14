@@ -1,2 +1,2 @@
 # HumanResourcesManagementSystem
-Human Resources Management System with Java Spring Boot
+Human Resources Management System Backend with Java Spring Boot
