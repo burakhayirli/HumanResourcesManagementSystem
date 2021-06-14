@@ -9,6 +9,7 @@ package com.burakhayirli.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.burakhayirli.hrms.business.abstracts.TechnologyService;
 import com.burakhayirli.hrms.core.utilities.converters.DtoConverterService;
@@ -20,6 +21,7 @@ import com.burakhayirli.hrms.dataAccess.abstracts.TechnologyDao;
 import com.burakhayirli.hrms.entities.concretes.Technology;
 import com.burakhayirli.hrms.entities.dtos.TechnologyDto;
 
+@Service
 public class TechnologyManager implements TechnologyService{
 
 	private TechnologyDao technologyDao;

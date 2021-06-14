@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.burakhayirli.hrms.core.entities.BaseEntity;
 
@@ -46,9 +48,11 @@ public class Resume extends BaseEntity {
 	private String description;
 
 	@Column(name = "created_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
 
 	@Column(name = "updated_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedDate;
 
 	@Column(name = "is_active")

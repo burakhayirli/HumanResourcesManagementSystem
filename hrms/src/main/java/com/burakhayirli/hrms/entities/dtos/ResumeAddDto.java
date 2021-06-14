@@ -6,6 +6,10 @@
  */
 package com.burakhayirli.hrms.entities.dtos;
 import java.sql.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -25,7 +29,10 @@ public class ResumeAddDto {
 	private String linkedLink;
 	private String photo;
 	private String description;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedDate;
 	
 
